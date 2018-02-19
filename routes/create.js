@@ -1,10 +1,8 @@
 var express = require("express");
 var Create  = express.Router();
 var bookModel = require("../model/book.model.js");
-// var bodyParser = require("body-parser");
-console.log("bookModel",bookModel)
+
 Create.post('/',(req,res,next)=>{
-        console.log("ye hai ",req.body)
     var saveData=new bookModel({
         name :req.body.name,
         author:req.body.author,

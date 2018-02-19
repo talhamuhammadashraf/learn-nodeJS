@@ -5,14 +5,16 @@ var bookModel = require("../model/book.model.js")
 console.log("bookModel",bookModel)
 
 Search.post("/", (req, res, next) => {
-    console.log("key",req.body)
-    bookModel.findOne({ name: req.body.keyword }, () => { console.log("found") })
+    bookModel.find({
+        // name: req.body.keyword,
+        published:req.body.keyword
+    }, () => { console.log("found") })
         .exec((error, book) => {
-            console.log("book",book)
+            console.log("book", book)
             if (!error) {
-                console.log("no error") 
+                console.log("no error")
                 res.json(book)
-             }
+            }
             else { res.send("not found") }
         })
 })
